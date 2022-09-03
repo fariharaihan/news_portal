@@ -26,7 +26,7 @@ const displayCategory = allCategoris => {
 
 
 const categoryNewsloadData = async (_id) => {
-    // spinnerToggle(true);
+    toggleSpinner(true);
     const newsCategoryUrl = `https://openapi.programming-hero.com/api/news/category/${_id}`;
     // const newsCategoryUrl = ` https://openapi.programming-hero.com/api/news/category/01`;
     const res = await fetch(newsCategoryUrl);
@@ -38,6 +38,7 @@ const categoryNewsloadData = async (_id) => {
 const displayCategoryNews = categoryItem => {
     console.log(categoryItem)
     const newsContainer = document.getElementById('news-container')
+    newsContainer.textContent = '';
     categoryItem.forEach(news => {
         console.log(news)
 
@@ -53,9 +54,9 @@ const displayCategoryNews = categoryItem => {
             <div class="col-md-10">
                 <div class="card-body">
                     <h5 class="card-title">${news.title ? news.title : 'No title found'}</h5>
-                    <p class="card-text">${news.details.slice(0, 150)}</p>
+                    <p class="card-text">${news.details.slice(0, 90)}...</p>
                      <div class=" d-flex aling-item-center justify-content-between">
-                        <div class="d-flex flex-column"><img src="${news.author.img}" class="img-thumbnail" alt=""><span class="px-3"style="width:100px">${news.author.name ? news.author.name : 'No data found'}</span></div>
+                        <div class="d-flex"><img src="${news.author.img}" class="img-thumbnail" alt=""><span class="px-3"style="width:100px">${news.author.name ? news.author.name : 'No data found'}</span></div>
                         <div><i class="fa-regular fa-eye"></i>${news.total_view ? news.total_view : 'No viewer found'}</div>
                         <button class="view-btn">View Details</button>
                     </div>
@@ -63,11 +64,19 @@ const displayCategoryNews = categoryItem => {
             </div>
         </div>
     </div>
-           
-            `;
+     `;
         newsContainer.appendChild(newsDiv);
     });
+    toggleSpinner(false);
 }
-
+const toggleSpinner = isLoading => {
+    const loadersection = document.getElementById('loader')
+    if (isLoading) {
+        loadersection.classList.remove('d-none')
+    }
+    else {
+        loadersection.classList.add('d-none')
+    }
+}
 // loadCategory()
 categoryLoadData()

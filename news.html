@@ -32,7 +32,7 @@
         <section>
             <div id="category-menu" class="conteiner mx-auto text-center">
                 <div class="row">
-                    <div id="category-container" class="col-12 ">
+                    <div id="category-container" class="col-12 d-flex inline-block">
                         <ul class=" list-item">
 
                         </ul>
@@ -53,34 +53,17 @@
                 <button class="btn btn-light">Trending</button>
             </div>
         </section>
-        <section>
-            <div id="loading-spiner" class="spinner d-flex justify-content-center mt-30 d-none" role="status">
-                <span class="spiner-border text-success text-center"></span>
+        <section id="loader" class="d-none">
+            <div style="height: 200" class="d-flex justify-content-center align-items-center">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
         </section>
         <section>
             <div id="news-container" class="row row-cols-1 py-4">
 
-                <!-- <div class="card mb-3 w-100">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="${news.author.img}" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">${news.title ? news.title : 'No title found'}</h5>
-                                <p class="card-text">${news.details.slice(0, 150)}</p>
-                                <div class="d-flex justify-content-around">
-                                    <img src="${news.thumbnail_url}" class="img-thumbnail" alt="">
-                                    <div><i class="fa-regular fa-eye"></i>${news.total_view ? news.total_view : 'No
-                                        viewer
-                                        found'}</div>
-                                    <button class="view-btn">View Details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+
             </div>
         </section>
     </main>
