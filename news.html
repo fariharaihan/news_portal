@@ -15,8 +15,35 @@
 
 <body>
     <!-- header part start -->
-    <header class="mt-2">
-        <nav class="navbar px-5 ">
+    <header class="mt-2 container">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">News Entrance</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    </ul>
+                    <form class="d-flex " role="search">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Blog</a>
+                            </li>
+
+                        </ul>
+
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- <nav class="navbar px-5 ">
             <div class="container-fluid px-5 ">
                 <a class="navbar-brand fs-3 text-primary fw-semibold">News Entrance</li>
                     <form class="d-flex" role="search">
@@ -24,7 +51,7 @@
                             <a class="navbar-brand fs-5">Bolg</li>
                     </form>
             </div>
-        </nav>
+        </nav> -->
     </header>
     <hr class="bg-secondary mx-5">
     <!-- main part start -->
@@ -53,6 +80,7 @@
                 <button class="btn btn-light">Trending</button>
             </div>
         </section>
+        <!-- spinner part -->
         <section id="loader" class="d-none">
             <div style="height: 200" class="d-flex justify-content-center align-items-center">
                 <div class="spinner-border text-success" role="status">
@@ -60,15 +88,39 @@
                 </div>
             </div>
         </section>
+        <!-- news part -->
         <section>
             <div id="news-container" class="row row-cols-1 py-4">
 
+            </div>
+        </section>
+        <!-- news modal -->
+        <section>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">
+                Launch demo modal
+            </button>
 
+            <!-- Modal -->
+            <div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="newsModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-
-
 
 
     <script src="js/news.js"></script>

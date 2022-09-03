@@ -1,5 +1,3 @@
-
-
 const categoryLoadData = async () => {
     const cateGoryUrl = `https://openapi.programming-hero.com/api/news/categories`;
     // const cateGoryUrl = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
@@ -36,11 +34,11 @@ const categoryNewsloadData = async (_id) => {
 
 
 const displayCategoryNews = categoryItem => {
-    console.log(categoryItem)
+    // console.log(categoryItem)
     const newsContainer = document.getElementById('news-container')
     newsContainer.textContent = '';
     categoryItem.forEach(news => {
-        console.log(news)
+        // console.log(news)
 
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col');
@@ -58,7 +56,8 @@ const displayCategoryNews = categoryItem => {
                      <div class=" d-flex aling-item-center justify-content-between">
                         <div class="d-flex"><img src="${news.author.img}" class="img-thumbnail" alt=""><span class="px-3"style="width:100px">${news.author.name ? news.author.name : 'No data found'}</span></div>
                         <div><i class="fa-regular fa-eye"></i>${news.total_view ? news.total_view : 'No viewer found'}</div>
-                        <button class="view-btn">View Details</button>
+                        <button onclick="loadNewsDetails('${news.rating_id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">View All</button>
+                    
                     </div>
                 </div>
             </div>
@@ -77,6 +76,16 @@ const toggleSpinner = isLoading => {
     else {
         loadersection.classList.add('d-none')
     }
+}
+
+const loadNewsDetails = async (news_id) => {
+    const newsDetailurl = ` https://openapi.programming-hero.com/api/news/${news_id}`
+    const res = await fetch(newsDetailurl);
+    const data = await res.json();
+    displayLoadNews(data)
+}
+const displayLoadNews = news => {
+    console.log(news)
 }
 // loadCategory()
 categoryLoadData()
