@@ -79,7 +79,7 @@ const toggleSpinner = isLoading => {
 }
 
 const loadNewsDetails = async (news_id) => {
-    const newsDetailurl = ` https://openapi.programming-hero.com/api/news/${news_id}`
+    const newsDetailurl = `https://openapi.programming-hero.com/api/news/${news_id}`
     const res = await fetch(newsDetailurl);
     const data = await res.json();
     displayLoadNews(data)
