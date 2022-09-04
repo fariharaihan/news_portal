@@ -24,6 +24,7 @@ const displayCategory = allCategoris => {
         `;
 
         categoryContainer.appendChild(categoryDiv);
+
     })
 }
 
@@ -48,7 +49,7 @@ const displayCategoryNews = categoryItem => {
     const newsContainer = document.getElementById('news-container')
     newsContainer.textContent = '';
     categoryItem.forEach(news => {
-        // console.log(news)
+        console.log(news)
 
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col');
