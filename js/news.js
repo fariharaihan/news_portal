@@ -1,9 +1,14 @@
 const categoryLoadData = async () => {
     const cateGoryUrl = `https://openapi.programming-hero.com/api/news/categories`;
     // const cateGoryUrl = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
-    const res = await fetch(cateGoryUrl);
-    const data = await res.json();
-    displayCategory(data.data.news_category);
+    try {
+        const res = await fetch(cateGoryUrl);
+        const data = await res.json();
+        displayCategory(data.data.news_category);
+    }
+    catch (error) {
+        alert('Something wrong')
+    }
 }
 
 const displayCategory = allCategoris => {
@@ -27,9 +32,14 @@ const categoryNewsloadData = async (_id) => {
     toggleSpinner(true);
     const newsCategoryUrl = `https://openapi.programming-hero.com/api/news/category/${_id}`;
     // const newsCategoryUrl = ` https://openapi.programming-hero.com/api/news/category/01`;
-    const res = await fetch(newsCategoryUrl);
-    const data = await res.json();
-    displayCategoryNews(data.data);
+    try {
+        const res = await fetch(newsCategoryUrl);
+        const data = await res.json();
+        displayCategoryNews(data.data);
+    }
+    catch (error) {
+        alert('Smonething Worng')
+    }
 }
 
 
@@ -78,14 +88,30 @@ const toggleSpinner = isLoading => {
     }
 }
 
-const loadNewsDetails = async (news_id) => {
-    const newsDetailurl = `https://openapi.programming-hero.com/api/news/${news_id}`
+const newsModalDetail = async (id) => {
+    // const newsDetailurl = ` https://openapi.programming-hero.com/api/news/${id}`;
+    const newsDetailurl = `https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`
+
     const res = await fetch(newsDetailurl);
     const data = await res.json();
-    displayLoadNews(data)
+    displayModalDetail(data.data[0])
+
+
 }
-const displayLoadNews = news => {
+const displayModalDetail = news => {
     console.log(news)
+    const modalTitle = document.getElementById('newsModalLabel');
+    modalTitle.innerText = news.title;
+    const modalBody = document.getElementById('modal-info');
+    modalBody.innerHTML = `
+    <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+    <h5>News title: ${news.title}</h5>
+    <p>Total view: ${news.total_view ? news.total_view : 'No data found'}</p>
+    <p>Rating: ${news.rating.number ? news.rating.number : 'No data found'}</p>
+    <p>author name: ${news.author.name ? news.author.name : 'no data found'}</p>
+    <p>Publish date: ${news.author.published_date ? news.author.published_date : 'No data found'}</p>
+
+`
 }
 // loadCategory()
 categoryLoadData()

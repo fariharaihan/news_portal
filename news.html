@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>News Entrance</title>
+    <!-- css link -->
     <link rel="stylesheet" href="styles/style.css">
     <!-- bootstrap link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -88,25 +89,21 @@
         </section>
         <!-- news modal -->
         <section>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">
-                Launch demo modal
-            </button>
 
             <!-- Modal -->
             <div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="newsModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="newsModalLabel"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            ...
+                        <div id="modal-info" class="modal-body">
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+
                         </div>
                     </div>
                 </div>
@@ -119,7 +116,7 @@
         <p class="text-white font-normal py-12 text-center">Copyright @ 2022 News Entrance</p>
     </footer>
     <!-------- footer part end ------------>
-    <script src="js/player.js"></script>
+
 
 
     <script src="js/news.js"></script>
