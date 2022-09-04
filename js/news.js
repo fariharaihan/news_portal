@@ -49,7 +49,7 @@ const displayCategoryNews = categoryItem => {
     const newsContainer = document.getElementById('news-container')
     newsContainer.textContent = '';
     categoryItem.forEach(news => {
-        console.log(news)
+        // console.log(news)
 
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col');
@@ -67,7 +67,7 @@ const displayCategoryNews = categoryItem => {
                      <div class=" d-flex aling-item-center justify-content-between">
                         <div class="d-flex"><img src="${news.author.img}" class="img-thumbnail" alt=""><span class="px-3"style="width:100px">${news.author.name ? news.author.name : 'No data found'}</span></div>
                         <div><i class="fa-regular fa-eye"></i>${news.total_view ? news.total_view : 'No viewer found'}</div>
-                        <button onclick="loadNewsDetails('${news.rating_id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">View All</button>
+                        <button onclick="loadNewsDetails('${news._id}')" href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">View All</button>
                     
                     </div>
                 </div>
@@ -79,6 +79,7 @@ const displayCategoryNews = categoryItem => {
     });
     toggleSpinner(false);
 }
+// ----loader----
 const toggleSpinner = isLoading => {
     const loadersection = document.getElementById('loader')
     if (isLoading) {
@@ -88,10 +89,9 @@ const toggleSpinner = isLoading => {
         loadersection.classList.add('d-none')
     }
 }
-
+// ---view more data
 const loadNewsDetails = async (id) => {
-    // const newsDetailurl = ` https://openapi.programming-hero.com/api/news/${id}`;
-    const newsDetailurl = `https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`
+    const newsDetailurl = ` https://openapi.programming-hero.com/api/news/${id}`;
 
     try {
         const res = await fetch(newsDetailurl);
