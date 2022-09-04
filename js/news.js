@@ -88,14 +88,18 @@ const toggleSpinner = isLoading => {
     }
 }
 
-const newsModalDetail = async (id) => {
+const loadNewsDetails = async (id) => {
     // const newsDetailurl = ` https://openapi.programming-hero.com/api/news/${id}`;
     const newsDetailurl = `https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`
 
-    const res = await fetch(newsDetailurl);
-    const data = await res.json();
-    displayModalDetail(data.data[0])
-
+    try {
+        const res = await fetch(newsDetailurl);
+        const data = await res.json();
+        displayModalDetail(data.data[0])
+    }
+    catch (error) {
+        alert('Smonething Worng')
+    }
 
 }
 const displayModalDetail = news => {
@@ -104,14 +108,14 @@ const displayModalDetail = news => {
     modalTitle.innerText = news.title;
     const modalBody = document.getElementById('modal-info');
     modalBody.innerHTML = `
-    <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="...">
-    <h5>News title: ${news.title}</h5>
-    <p>Total view: ${news.total_view ? news.total_view : 'No data found'}</p>
-    <p>Rating: ${news.rating.number ? news.rating.number : 'No data found'}</p>
-    <p>author name: ${news.author.name ? news.author.name : 'no data found'}</p>
-    <p>Publish date: ${news.author.published_date ? news.author.published_date : 'No data found'}</p>
+        <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+        <h5>News title: ${news.title}</h5>
+        <p>Total view: ${news.total_view ? news.total_view : 'No data found'}</p>
+        <p>Rating: ${news.rating.number ? news.rating.number : 'No data found'}</p>
+        <p>author name: ${news.author.name ? news.author.name : 'no data found'}</p>
+        <p>Publish date: ${news.author.published_date ? news.author.published_date : 'No data found'}</p>
 
-`
+    `
 }
 // loadCategory()
 categoryLoadData()
